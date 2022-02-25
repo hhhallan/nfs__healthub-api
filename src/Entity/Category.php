@@ -35,6 +35,9 @@ class Category
     #[ORM\ManyToMany(targetEntity: Metrix::class, mappedBy: 'category')]
     private $metrixes;
 
+    #[ORM\Column(type: 'text', nullable: true)]
+    private $description;
+
 
     public function __construct()
     {
@@ -145,6 +148,18 @@ class Category
         if ($this->metrixes->removeElement($metrix)) {
             $metrix->removeCategory($this);
         }
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }
