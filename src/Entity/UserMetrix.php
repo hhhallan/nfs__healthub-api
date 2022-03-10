@@ -26,6 +26,9 @@ class UserMetrix
     #[ORM\Column(type: 'float')]
     private $value;
 
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private $time;
+
     public function __construct()
     {
         $this->user = new ArrayCollection();
@@ -93,6 +96,18 @@ class UserMetrix
     public function setValue(float $value): self
     {
         $this->value = $value;
+
+        return $this;
+    }
+
+    public function getTime(): ?\DateTimeInterface
+    {
+        return $this->time;
+    }
+
+    public function setTime(?\DateTimeInterface $time): self
+    {
+        $this->time = $time;
 
         return $this;
     }
