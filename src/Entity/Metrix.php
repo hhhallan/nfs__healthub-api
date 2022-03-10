@@ -33,7 +33,6 @@ class Metrix
     private $category;
 
 
-
     public function __construct()
     {
         $this->achievements = new ArrayCollection();
